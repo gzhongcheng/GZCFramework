@@ -9,7 +9,6 @@
 #import "JxbAdPageView.h"
 #import "GZCFramework.h"
 
-#define mainWidth           [[UIScreen mainScreen] bounds].size.width
 #define defaultInterval     5
 #define addBeyond           2
 
@@ -41,6 +40,7 @@
     self = [super init];
     if (self)
     {
+        self.contentMode = UIViewContentModeScaleAspectFit;
     }
     return self;
 }
@@ -74,7 +74,7 @@
         [v removeFromSuperview];
     }
     NSMutableArray* tmp = [NSMutableArray array];
-    scView.contentSize = CGSizeMake((imgNameArr.count + ((adCount>1)?addBeyond*2:0)) * mainWidth, self.bounds.size.height);
+    scView.contentSize = CGSizeMake((imgNameArr.count + ((adCount>1)?addBeyond*2:0)) * WIDTH(self), self.bounds.size.height);
     for (int i = 0; i < imgNameArr.count+ ((adCount>1)?addBeyond*2:0); i++)
     {
         NSString* name = nil;
@@ -95,19 +95,20 @@
             else name = [imgNameArr objectAtIndex:i-addBeyond];
         }
         [tmp addObject:name];
-        UIImageView* img = [[UIImageView alloc] initWithFrame:CGRectMake(i * mainWidth, 0, mainWidth, self.bounds.size.height)];
+        UIImageView* img = [[UIImageView alloc] initWithFrame:CGRectMake(i * WIDTH(self), 0, WIDTH(self), HEIGHT(self))];
         img.userInteractionEnabled = YES;
-        img.contentMode = UIViewContentModeScaleAspectFit;
+        img.clipsToBounds = YES;
+        img.contentMode = self.contentMode;
         UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(Actiondo)];
         [img addGestureRecognizer:tap];
         [img setWebImage:nil image:name];
         [scView addSubview:img];
     }
-    scView.contentOffset = CGPointMake(((adCount>1)?mainWidth*addBeyond:0), 0);
+    scView.contentOffset = CGPointMake(((adCount>1)?WIDTH(self)*addBeyond:0), 0);
     
     if(!pcView)
     {
-        pcView = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 30, mainWidth, 30)];
+        pcView = [[UIPageControl alloc] initWithFrame:CGRectMake(0, self.bounds.size.height - 30, WIDTH(self), 30)];
         pcView.userInteractionEnabled = NO;
         pcView.currentPage = 0;
         pcView.pageIndicatorTintColor = [UIColor grayColor];
@@ -143,11 +144,11 @@
 - (void)handleScrollTimer
 {
     CGFloat x = scView.contentOffset.x;
-    int page = x / mainWidth;
-    if ((x - page * mainWidth) > mainWidth / 2)
+    int page = x / WIDTH(self);
+    if ((x - page * WIDTH(self)) > WIDTH(self) / 2)
         page++;
     int next = page+1;
-    [scView scrollRectToVisible:CGRectMake(next * mainWidth, 0, mainWidth, self.bounds.size.height) animated:YES];
+    [scView scrollRectToVisible:CGRectMake(next * WIDTH(self), 0, WIDTH(self), self.bounds.size.height) animated:YES];
     [self setAdViews:next bFromTimer:YES];
     
 }
@@ -156,8 +157,8 @@
 - (void)scrollViewDidEndDecelerating:(UIScrollView *)scrollView
 {
     CGFloat x = scrollView.contentOffset.x;
-    int page = x / mainWidth;
-    if ((x - page * mainWidth) > mainWidth / 2)
+    int page = x / WIDTH(self);
+    if ((x - page * WIDTH(self)) > WIDTH(self) / 2)
         page++;
 
     [self setAdViews:page bFromTimer:NO];
@@ -168,14 +169,14 @@
     if(page>=adCount+addBeyond)
     {
         if(!bFromTimer)
-            scView.contentOffset = CGPointMake(mainWidth*addBeyond, 0);
+            scView.contentOffset = CGPointMake(WIDTH(self)*addBeyond, 0);
         else
-            [self performSelector:@selector(setConttentOffset:) withObject:[NSNumber numberWithFloat:mainWidth*addBeyond] afterDelay:0.5];
+            [self performSelector:@selector(setConttentOffset:) withObject:[NSNumber numberWithFloat:WIDTH(self)*addBeyond] afterDelay:0.5];
         page = 0;
     }
     else if(page < addBeyond)
     {
-        scView.contentOffset = CGPointMake(mainWidth*(adCount+addBeyond-1), 0);
+        scView.contentOffset = CGPointMake(WIDTH(self)*(adCount+addBeyond-1), 0);
         page = adCount+addBeyond;
     }
     pcView.currentPage = page - addBeyond;
@@ -189,6 +190,10 @@
     if(adCount > 1)
     {
         autoTimer = [NSTimer scheduledTimerWithTimeInterval:_autoInterval target:self selector:@selector(handleScrollTimer) userInfo:nil repeats:YES];
+    }
+    if(delegate)
+    {
+        [delegate onScroll:(int)pcView.currentPage];
     }
 }
 

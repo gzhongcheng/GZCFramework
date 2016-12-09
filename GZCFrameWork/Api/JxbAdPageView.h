@@ -10,10 +10,14 @@
 
 @protocol JxbAdPageViewDelegate <NSObject>
 - (void)click:(int)index;
+@optional
+- (void)onScroll:(int)index;
 @end
 
 @interface JxbAdPageView : UIView
+
 @property(nonatomic,weak)id<JxbAdPageViewDelegate> delegate;
+
 //圆点颜色
 - (void)setPageTintColor:(UIColor*)tintColor;
 //选中圆点颜色

@@ -8,10 +8,16 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import "GZCFramework.h"
 
 @interface GZCBaseModel : NSObject
 
-@property (nonatomic, copy, readonly) NSString *identifier;
+@property (nonatomic, copy) NSString *identifier;
 
+//重写
++(instancetype)modelWithDic:(NSDictionary *)dic;
+
++(id)dicWithJsonData:(NSData *)responseObject
+                           error:(NSError **)error;
 
 @end

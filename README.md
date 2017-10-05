@@ -1,6 +1,5 @@
 # GZCFramework
-项目常用到的控件、方法整理，方便调用
-
+项目常用到的控件、方法整理，方便调用\n
 如果使用pod导入，则已经包含如下框架：
 TouchJSON
 MBProgressHUD

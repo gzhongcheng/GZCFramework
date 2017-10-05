@@ -1,6 +1,6 @@
 //
 //  GZCQRCodeManager.m
-//  GZCFrameWork
+//  LXJLB
 //
 //  Created by GuoZhongCheng on 16/9/22.
 //  Copyright © 2016年 郭忠橙. All rights reserved.
@@ -25,8 +25,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     return filter.outputImage;
 }
 
-+ (UIImage *)resizeQRCodeImage:(CIImage *)image
-                      withSize:(CGFloat)size {
++ (UIImage *)resizeQRCodeImage:(CIImage *)image withSize:(CGFloat)size {
     CGRect extent = CGRectIntegral(image.extent);
     CGFloat scale = MIN(size/CGRectGetWidth(extent), size/CGRectGetHeight(extent));
     size_t width = CGRectGetWidth(extent) * scale;
@@ -48,10 +47,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     return [UIImage imageWithCGImage:imageRefResized];
 }
 
-+ (UIImage *)specialColorImage:(UIImage*)image
-                       withRed:(CGFloat)red
-                         green:(CGFloat)green
-                          blue:(CGFloat)blue {
++ (UIImage *)specialColorImage:(UIImage*)image withRed:(CGFloat)red green:(CGFloat)green blue:(CGFloat)blue {
     const int imageWidth = image.size.width;
     const int imageHeight = image.size.height;
     size_t bytesPerRow = imageWidth * 4;
@@ -93,9 +89,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     return img;
 }
 
-+(UIImage *)addIconToQRCodeImage:(UIImage *)image
-                        withIcon:(UIImage *)icon
-                    withIconSize:(CGSize)iconSize {
++(UIImage *)addIconToQRCodeImage:(UIImage *)image withIcon:(UIImage *)icon withIconSize:(CGSize)iconSize {
     UIGraphicsBeginImageContext(image.size);
     //通过两张图片进行位置和大小的绘制，实现两张图片的合并；其实此原理做法也可以用于多张图片的合并
     CGFloat widthOfImage = image.size.width;
@@ -112,9 +106,7 @@ void ProviderReleaseData (void *info, const void *data, size_t size){
     return img;
 }
 
-+(UIImage *)addIconToQRCodeImage:(UIImage *)image
-                        withIcon:(UIImage *)icon
-                       withScale:(CGFloat)scale {
++(UIImage *)addIconToQRCodeImage:(UIImage *)image withIcon:(UIImage *)icon withScale:(CGFloat)scale {
     UIGraphicsBeginImageContext(image.size);
     
     //通过两张图片进行位置和大小的绘制，实现两张图片的合并；其实此原理做法也可以用于多张图片的合并

@@ -1,6 +1,6 @@
 //
 //  NSDate+Utils.m
-//  BloodSugar
+//  GZCFrameWork
 //
 //  Created by PeterPan on 13-12-27.
 //  Copyright (c) 2013年 shake. All rights reserved.
@@ -148,7 +148,6 @@
 #pragma mark - Time string
 - (NSString *)timeHourMinute
 {
-
     return [self timeHourMinuteWithPrefix:NO suffix:NO];
 }
 
@@ -171,20 +170,20 @@
         timeStr = [NSString stringWithFormat:@"%@%@",([self hour] > 12 ? @"下午" : @"上午"),timeStr];
     }
     if (enableSuffix) {
-        timeStr = [NSString stringWithFormat:@"%@%@",([self hour] > 12 ? @"pm" : @"am"),timeStr];
+        timeStr = [NSString stringWithFormat:@"%@%@",timeStr,([self hour] > 12 ? @"pm" : @"am")];
     }
     return timeStr;
 }
 
 
 #pragma mark - Date String
-- (NSString *)stringTime
-{
-    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
-    [formatter setDateFormat:@"HH:mm"];
-    NSString *str = [formatter stringFromDate:self];
-    return str;
-}
+//- (NSString *)stringTime
+//{
+//    NSDateFormatter *formatter = [[NSDateFormatter alloc]init];
+//    [formatter setDateFormat:@"HH:mm"];
+//    NSString *str = [formatter stringFromDate:self];
+//    return str;
+//}
 
 - (NSString *)stringMonthDay
 {
@@ -208,7 +207,7 @@
 - (NSString *)stringYearMonthDayCompareToday
 {
     NSString *str;
-    NSInteger chaDay = [self daysBetweenCurrentDateAndDate];
+    NSInteger chaDay = [self daysFromNow];
     if (chaDay == 0) {
         str = @"今天";
     }else if (chaDay == 1){
@@ -277,6 +276,15 @@
 + (NSString *)timestampFormatStringSubSeconds
 {
     return @"yyyy-MM-dd HH:mm";
+}
+
++(NSString *)stringWithTimeInterval:(NSString *)timeinterval withFormat:(NSString *)format{
+    NSDate *time = [self dateFromTimeInterval:timeinterval];
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    [formatter setTimeStyle:NSDateFormatterShortStyle];
+    [formatter setDateFormat:format];
+    return [formatter stringFromDate:time];
 }
 
 #pragma mark - Date adjust
@@ -360,7 +368,7 @@
     return date;
 }
 
-- (NSInteger) daysBetweenCurrentDateAndDate
+- (NSInteger) daysFromNow
 {
     //只取年月日比较
     NSDate *dateSelf = [NSDate dateStandardFormatTimeZeroWithDate:self];
@@ -374,7 +382,19 @@
     return day;
 }
 
+-(NSInteger)secondsFromNow{
+    NSTimeInterval selfTimestamp = [self timeIntervalSince1970];
+    NSDate *dateNow = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval nowTimestamp = [dateNow timeIntervalSince1970];
+    return nowTimestamp - selfTimestamp;
+}
+
 #pragma mark - Date and string convert
+
++(NSDate *)dateFromTimeInterval:(NSString *)timeinterval{
+    return [NSDate dateWithTimeIntervalSince1970:[timeinterval integerValue]];
+}
+
 + (NSDate *)dateFromString:(NSString *)string {
     return [NSDate dateFromString:string withFormat:[NSDate dbFormatString]];
 }
@@ -404,5 +424,13 @@
 
 + (NSString *)dbFormatString {
     return [NSDate timestampFormatString];
+}
+
+#pragma mark - timeInterval
++ (NSString *)timeInterval{
+    NSDate* dat = [NSDate dateWithTimeIntervalSinceNow:0];
+    NSTimeInterval a=[dat timeIntervalSince1970]*1000;
+    NSString *timeString = [NSString stringWithFormat:@"%f", a];
+    return timeString;
 }
 @end

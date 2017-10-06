@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name         = "GZCFramework"
   s.version      = "2.0.4"
-  s.summary      = "GZCFrameWork desc"
+  s.summary      = "GZCFramework desc"
 
   s.homepage     = "https://github.com/gzhongcheng"
   s.license         = { type: 'MIT', file: 'LICENSE' }
@@ -10,29 +10,41 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/gzhongcheng/GZCFramework.git",:tag => s.version}
-  s.source_files = "GZCFrameWork/*.{h,m}"
+  s.source_files = "GZCFramework/*.{h,m}"
     s.subspec 'Define' do |ss|
-        ss.source_files = 'GZCFrameWork/Define/*.{h,m}'
+        ss.dependency 'GZCFramework/Category'
+        ss.source_files = 'GZCFramework/Define/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/Define/*.h'
     end
     s.subspec 'Api' do |ss|
-        ss.source_files = 'GZCFrameWork/Api/*.{h,m}'
+        ss.source_files = 'GZCFramework/Api/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/Api/*.h'
     end
     s.subspec 'Category' do |ss|
-        ss.source_files = 'GZCFrameWork/Category/*.{h,m}'
+        ss.dependency 'GZCFramework/Define'
+        ss.source_files = 'GZCFramework/Category/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/Category/*.h'
     end
     s.subspec 'Http' do |ss|
-        ss.source_files = 'GZCFrameWork/Http/*.{h,m}'
+        ss.dependency 'GZCFramework/Category'
+        ss.source_files = 'GZCFramework/Http/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/Http/*.h'
     end
     s.subspec 'Resouse' do |ss|
-        ss.source_files = 'GZCFrameWork/Resouse/*.{h,m}'
+        ss.source_files = 'GZCFramework/Resouse/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/Resouse/*.h'
     end
     s.subspec 'UI' do |ss|
-        ss.source_files = 'GZCFrameWork/UI/*.{h,m}'
+        ss.source_files = 'GZCFramework/UI/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/UI/*.h'
     end
     s.subspec 'BaseClass' do |ss|
-        ss.source_files = 'GZCFrameWork/BaseClass/*.{h,m}'
+        ss.dependency 'GZCFramework/Api'
+        ss.dependency 'GZCFramework/Define'
+        ss.source_files = 'GZCFramework/BaseClass/*.{h,m}'
+        ss.public_header_files = 'GZCFramework/BaseClass/*.h'
     end
-  s.resources    = "GZCFrameWork/Resouse/*.{png}"
+  s.resources    = "GZCFramework/Resouse/*.{png}"
   s.requires_arc = true
   s.dependency 'TouchJSON'
   s.dependency 'MBProgressHUD'

@@ -7,7 +7,7 @@
 //
 
 #import "UIImageView+NoMapMode.h"
-#import "AFNetworking.h"
+//#import "AFNetworking.h"
 #import "ProjectMacros.h"
 #import "UIImage+RenderedImage.h"
 #import "UIImageView+WebCache.h"
@@ -53,17 +53,17 @@
         [self setImage:[UIImage imageNamed:image]];
         return;
     }
-    BOOL on = [[[NSUserDefaults standardUserDefaults] objectForKey:kNoMapMode] boolValue];
+//    BOOL on = [[[NSUserDefaults standardUserDefaults] objectForKey:kNoMapMode] boolValue];
     if (placeholder == nil) {
         placeholder = [UIImage imageWithRenderColor:KClearColor renderSize:CGSizeMake(1, 1)];
     }
-    if(on && ![[AFNetworkReachabilityManager sharedManager] isReachableViaWiFi])    {
-        [self setImage:placeholder];
-    }
-    else
-    {
+//    if(on && ![[AFNetworkReachabilityManager sharedManager] isReachableViaWiFi])    {
+//        [self setImage:placeholder];
+//    }
+//    else
+//    {
         [self sd_setImageWithURL:[NSURL URLWithString:url] placeholderImage:placeholder completed:completedBlock];
-    }
+//    }
 }
 
 

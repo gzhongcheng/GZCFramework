@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "GZCFrameWork"
-  s.version      = "1.0.0"
+  s.version      = "2.0.0"
   s.summary      = "GZCFrameWork desc"
 
   s.homepage     = "https://github.com/gzhongcheng"
@@ -9,7 +9,7 @@ Pod::Spec.new do |s|
   s.author       = { "gzhongcheng" => "gzhongcheng@qq.com" }
 
   s.platform     = :ios, "8.0"
-  s.source       = { :git => "https://github.com/gzhongcheng/GZCFramework" }
+  s.source       = { :git => "https://github.com/gzhongcheng/GZCFramework.git",:tag => s.version}
   s.source_files = "GZCFrameWork/**/*.{h,m}"
   s.resources    = "GZCFrameWork/GZCAssets.xcassets"
   s.requires_arc = true

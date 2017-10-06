@@ -10,6 +10,7 @@
 #import "AFNetworking.h"
 #import "ProjectMacros.h"
 #import "UIImage+RenderedImage.h"
+#import "UIImageView+WebCache.h"
 
 @implementation UIImageView (NoMapMode)
 

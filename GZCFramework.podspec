@@ -11,7 +11,7 @@ Pod::Spec.new do |s|
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/gzhongcheng/GZCFramework.git",:tag => s.version}
   s.source_files = "GZCFrameWork/**/*.{h,m}"
-  s.resources    = "GZCFrameWork/**/*.{storyboard,xcassets,xib,png}"
+  s.resources    = "GZCFrameWork/Resouse/*.{png}"
   s.requires_arc = true
   s.dependency 'TouchJSON'
   s.dependency 'MBProgressHUD'

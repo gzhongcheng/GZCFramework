@@ -9,7 +9,6 @@
 #import "GZCWebView.h"
 #import "UIView+ScreenCapture.h"
 #import "WKWebView+ScreenCapture.h"
-#import "UserModel.h"
 #import "SDWebImageDownloader.h"
 #import "GZCAlertView.h"
 
@@ -251,19 +250,6 @@ static void *GZCWebBrowserContext = &GZCWebBrowserContext;
 }
 
 #pragma mark - loadUrl
-//-(void)loadURLStringWithCookie:(NSString *)URLString{
-//    NSURL *URL = [NSURL URLWithString:URLString];
-//    [self loadURLWithCookie:URL];
-//}
-//
-//-(void)loadURLWithCookie:(NSURL *)URL{
-//    [self loadRequestWithCookie:[NSURLRequest requestWithURL:URL]];
-//}
-//
-//-(void)loadRequestWithCookie:(NSURLRequest *)request{
-//    [self loadRequest:request withCookie:[UserModel shareInstance].cookie];
-//}
-
 -(void)loadURL:(NSURL *)URL withCookie:(NSDictionary *)cookies{
     [self loadRequest:[NSURLRequest requestWithURL:URL] withCookie:cookies];
 }
@@ -390,35 +376,6 @@ static void *GZCWebBrowserContext = &GZCWebBrowserContext;
             completionHandler(nil);
         }
     }];
-//    if (self.wkWebView) {
-//        [self.wkWebView evaluateJavaScript:@"document.cookie" completionHandler:^(id _Nullable response, NSError * _Nullable error) {
-//            if ([response isKindOfClass:[NSString class]]) {
-//                NSArray * array = [response componentsSeparatedByString:@";"];
-//                NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
-//                for (NSString * str in array) {
-//                    NSArray *kv = [str componentsSeparatedByString:@"="];
-//                    if ([kv count]==2) {
-//                        NSString *key = [kv[0] stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
-//                        NSString *value = kv[1];
-//                        [cookies setValue:value forKey:key];
-//                    }
-//                }
-//                completionHandler(cookies);
-//            }
-//            else{
-//                completionHandler(response);
-//            }
-//            
-//        }];
-//    }else{
-//        NSHTTPCookieStorage *cookieJar = [NSHTTPCookieStorage sharedHTTPCookieStorage];
-//        NSArray *cookieAry = [cookieJar cookies];
-//        NSMutableDictionary *cookies = [NSMutableDictionary dictionary];
-//        for (NSHTTPCookie *cookie in cookieAry){
-//            [cookies setValue:cookie.value forKey:cookie.name];
-//        }
-//        completionHandler(cookies);
-//    }
 }
 
 - (NSArray *)getCookies:(NSDictionary *)cookie{

@@ -10,40 +10,7 @@ Pod::Spec.new do |s|
 
   s.platform     = :ios, "8.0"
   s.source       = { :git => "https://github.com/gzhongcheng/GZCFramework.git",:tag => s.version}
-  s.source_files = "GZCFramework/*.{h,m}"
-    s.subspec 'Define' do |ss|
-        ss.dependency 'GZCFramework/Category'
-        ss.source_files = 'GZCFramework/Define/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/Define/*.h'
-    end
-    s.subspec 'Api' do |ss|
-        ss.source_files = 'GZCFramework/Api/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/Api/*.h'
-    end
-    s.subspec 'Category' do |ss|
-        ss.dependency 'GZCFramework/Define'
-        ss.source_files = 'GZCFramework/Category/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/Category/*.h'
-    end
-    s.subspec 'Http' do |ss|
-        ss.dependency 'GZCFramework/Category'
-        ss.source_files = 'GZCFramework/Http/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/Http/*.h'
-    end
-    s.subspec 'Resouse' do |ss|
-        ss.source_files = 'GZCFramework/Resouse/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/Resouse/*.h'
-    end
-    s.subspec 'UI' do |ss|
-        ss.source_files = 'GZCFramework/UI/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/UI/*.h'
-    end
-    s.subspec 'BaseClass' do |ss|
-        ss.dependency 'GZCFramework/Api'
-        ss.dependency 'GZCFramework/Define'
-        ss.source_files = 'GZCFramework/BaseClass/*.{h,m}'
-        ss.public_header_files = 'GZCFramework/BaseClass/*.h'
-    end
+  s.source_files = "GZCFramework/**/*.{h,m}"
   s.resources    = "GZCFramework/Resouse/*.{png}"
   s.requires_arc = true
   s.dependency 'TouchJSON'

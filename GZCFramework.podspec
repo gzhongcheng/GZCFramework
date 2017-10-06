@@ -1,5 +1,5 @@
 Pod::Spec.new do |s|
-  s.name         = "GZCFrameWork"
+  s.name         = "GZCFramework"
   s.version      = "2.0.0"
   s.summary      = "GZCFrameWork desc"
 

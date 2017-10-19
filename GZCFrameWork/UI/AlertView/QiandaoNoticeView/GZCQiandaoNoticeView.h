@@ -40,11 +40,11 @@
 /**
  点击确定按钮的回调
  */
-@property (nonatomic , copy ) void (^doneBlock)();
+@property (nonatomic , copy ) void (^doneBlock)(void);
 
 /**
  点击关闭按钮的回调
  */
-@property (nonatomic , copy ) void (^closeBlock)();
+@property (nonatomic , copy ) void (^closeBlock)(void);
 
 @end

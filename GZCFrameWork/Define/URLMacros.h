@@ -12,9 +12,8 @@
 #ifndef URLMacros_h
 #define URLMacros_h
 
-//服务器验证密钥
-#define MS_AK @""
-#define MS_SK @""
+#define MS_AK @"Y23tUTNHQ0xOd2ZDQzZC"
+#define MS_SK @"Rk1Stm32QWxYZVVONVlv"
 
 /*
  
@@ -33,20 +32,20 @@
 #if DevelopSever
 
 /**开发服务器*/
-#define API_HOST @""
-#define API_PAY_HOST @""
+#define API_HOST @"http://www.nenyimall.com/"
+#define API_PAY_HOST @"http://pay.nenyimall.com/pay/wxpay/"
 
 #elif TestSever
 
 /**测试服务器*/
-#define API_HOST @""
-#define API_PAY_HOST @""
+#define API_HOST @"http://192.168.16.117:8007/"
+#define API_PAY_HOST @"http://pay.nenyimall.com/pay/wxpay/"
 
 #elif ProductSever
 
 /**生产服务器*/
-#define API_HOST @""
-#define API_PAY_HOST @""
+#define API_HOST @"http://www.wokanw.com/"
+#define API_PAY_HOST @"http://pay.nenyimall.com/pay/wxpay/"
 
 #endif
 
@@ -57,13 +56,14 @@
 #define APIPATH(_path)             [NSString stringWithFormat:@"%@app_api/%@", API_HOST,@#_path]
 #define PAYPATH(_path)             [NSString stringWithFormat:@"%@%@", API_PAY_HOST,@#_path]
 
-//返回原生界面
 #define PATH_BACK     PATH(can_not_go_back)
 
-//接口常数
-#define PATH_LOGIN    PATH()
+#define PATH_LOGIN    PATH(?m=member&act=show_login)
+#define PATH_GOODS    PATH(products_content.asp?id=)
 #define PATH_HOME     PATH()
-#define PATH_USER     PATH()
-#define PATH_WXPAY    PATH()
+#define PATH_PROJECT  PATH((?m=project&act=show_list))
+#define PATH_UPGRADE  PATH(user_up.asp)
+#define PATH_USER     PATH(user_center.asp)
+#define PATH_WXPAY    PATH(wxpayok.asp?)
 
 #endif /* URLMacros_h */

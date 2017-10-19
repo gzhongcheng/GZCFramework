@@ -59,7 +59,7 @@
 -(void)contentPageDrawWithTargetView:(UIView *)targetView
                atIndex:(NSInteger)index
               maxIndex:(NSInteger)maxIndex
-              callback:(void(^)())callback{
+              callback:(void(^)(void))callback{
     CGRect splitFrame = CGRectMake(0, index * targetView.frame.size.height, targetView.bounds.size.width, targetView.bounds.size.height);
     CGRect myFrame = self.frame;
     myFrame.origin.y = - (index * targetView.frame.size.height);

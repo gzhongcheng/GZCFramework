@@ -70,7 +70,7 @@ typedef NS_ENUM(NSInteger, LEECustomViewPositionType) {
     LEECustomViewPositionTypeRight
 };
 
-typedef LEEAlertConfigModel *(^LEEConfig)();
+typedef LEEAlertConfigModel *(^LEEConfig)(void);
 typedef LEEAlertConfigModel *(^LEEConfigToBool)(BOOL is);
 typedef LEEAlertConfigModel *(^LEEConfigToFloat)(CGFloat number);
 typedef LEEAlertConfigModel *(^LEEConfigToString)(NSString *str);
@@ -81,7 +81,7 @@ typedef LEEAlertConfigModel *(^LEEConfigToBlurEffectStyle)(UIBlurEffectStyle sty
 typedef LEEAlertConfigModel *(^LEEConfigToFloatBlock)(CGFloat(^)(LEEScreenOrientationType type));
 typedef LEEAlertConfigModel *(^LEEConfigToAction)(void(^)(LEEAction *action));
 typedef LEEAlertConfigModel *(^LEEConfigToCustomView)(void(^)(LEECustomView *custom));
-typedef LEEAlertConfigModel *(^LEEConfigToStringAndBlock)(NSString *str , void (^)());
+typedef LEEAlertConfigModel *(^LEEConfigToStringAndBlock)(NSString *str , void (^)(void));
 typedef LEEAlertConfigModel *(^LEEConfigToConfigLabel)(void(^)(UILabel *label));
 typedef LEEAlertConfigModel *(^LEEConfigToConfigTextField)(void(^)(UITextField *textField));
 typedef LEEAlertConfigModel *(^LEEConfigToItem)(void(^)(LEEItem *item));

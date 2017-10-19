@@ -119,7 +119,9 @@
         
         [obj removeFromSuperview];
     }];
-    
+   
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wcomma"
     if (self.models.count) {
         
         // NodeViewsContentView add subView.
@@ -155,7 +157,7 @@
             self.position == kNodeViewTopRight ?
             self.nodeViewsContentView.right = self.width - self.edgeInsets.right,
             self.nodeViewsContentView.y     = self.edgeInsets.top : 0;
-            
+
             for (int i = 0; i < self.models.count; i++) {
                 
                 CustomNodeStateView *stateView = [[self.nodeViewTemplate.class alloc] initWithFrame:CGRectMake(i * width, 0, width, height)];
@@ -216,6 +218,7 @@
             }
         }
         
+#pragma clang diagnostic pop
     } else {
         
         self.nodeViewsContentView.alpha = 0.f;

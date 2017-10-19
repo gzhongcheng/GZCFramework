@@ -6,8 +6,7 @@
 //  Copyright © 2016年 GuoZhongCheng. All rights reserved.
 //
 
-#import "UIColor+Utils.h"
-#import "UtilsMacros.h"
+#import "UIColor+Utils.h"\
 
 @implementation UIColor (Utils)
 

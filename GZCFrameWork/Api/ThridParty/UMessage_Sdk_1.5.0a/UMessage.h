@@ -55,7 +55,7 @@ typedef NS_ENUM(NSInteger, kUMessageError) {
 
 
 @class CLLocation;
-typedef void (^UMPlaunchFinishBlock)();
+typedef void (^UMPlaunchFinishBlock)(void);
 /** UMessage：开发者使用主类（API）
  */
 @interface UMessage : NSObject
@@ -100,6 +100,7 @@ typedef void (^UMPlaunchFinishBlock)();
  @param types7 iOS7及以下版本的推送类型。默认types7 = UIRemoteNotificationTypeBadge|UIRemoteNotificationTypeAlert|UIRemoteNotificationTypeSound;
  @param types8 iOS8及以上，iOS10以下版本的推送类型。默认types8 = UIUserNotificationTypeAlert|UIUserNotificationTypeSound|UIUserNotificationTypeBadge;
   */
+
 + (void)registerForRemoteNotifications:(nullable NSSet<UIUserNotificationCategory *> *)categories8
                       withTypesForIos7:(UIRemoteNotificationType)types7
                       withTypesForIos8:(UIUserNotificationType)types8;

@@ -29,7 +29,10 @@
     }
     if ([url rangeOfString:@".gif"].location != NSNotFound) {
         NSURL *URL = [NSURL URLWithString:url];
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
         NSData *imageData = [[SDImageCache sharedImageCache] performSelector:@selector(diskImageDataBySearchingAllPathsForKey:) withObject:URL.absoluteString];
+#pragma clang diagnostic pop
         if (imageData == nil) {
             [[SDWebImageDownloader sharedDownloader] downloadImageWithURL:URL
                                                                   options:0

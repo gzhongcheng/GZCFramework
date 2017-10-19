@@ -8,6 +8,25 @@
 
 #import <UIKit/UIKit.h>
 
+//颜色
+#define KClearColor         [UIColor clearColor]
+#define KWhiteColor         [UIColor whiteColor]
+#define KBlackColor         [UIColor blackColor]
+#define KGrayColor          [UIColor grayColor]
+#define KLightGrayColor     [UIColor lightGrayColor]
+#define KLineGrayColor      RGB(229,229,229)
+#define KBlueColor          [UIColor blueColor]
+#define KRedColor           [UIColor redColor]
+//随机色生成
+#define kRandomColor        KRGBColor(arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0)
+//RGB色值
+#define RGB(r,g,b)          [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1.]
+#define RGBA(r,g,b,a)       [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:a]
+//十六进制颜色
+#define HEXCOLOR(str)       [UIColor hexFloatColor:str]
+//改变颜色的透明度
+#define CHANGE_COLOR_ALPHA(c,a) [c colorWithAlphaComponent:a];
+
 @interface UIColor (Utils)
 
 /**

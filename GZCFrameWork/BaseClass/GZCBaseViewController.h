@@ -13,6 +13,8 @@
 #import "UtilsMacros.h"
 #import "TouchJSON/NSDictionary_JSONExtensions.h"
 
+typedef void (^TargetBlock)(void);
+
 @interface GZCBaseViewController : UIViewController
 
 extern NSString * const titleViewId;
@@ -124,27 +126,27 @@ extern NSString * const backgroundViewId;
 -(void)showAlertTitle:(NSString *)title
               message:(NSString *)message
            doneString:(NSString *)doneStr
-          doneHandler:(void (^)())donehandler
+          doneHandler:(TargetBlock)donehandler
             doneStyle:(UIAlertActionStyle)doneStyle
          cancelString:(NSString *)cancelStr
-        cancelHandler:(void (^)())cancelhandler;
+        cancelHandler:(TargetBlock)cancelhandler;
 
 -(void)showAlertMessage:(NSString *)message
              doneString:(NSString *)doneStr
-            doneHandler:(void (^)())donehandler
+            doneHandler:(TargetBlock)donehandler
               doneStyle:(UIAlertActionStyle)doneStyle
            cancelString:(NSString *)cancelStr
-          cancelHandler:(void (^)())cancelhandler;
+          cancelHandler:(TargetBlock)cancelhandler;
 
 -(void)showAlertMessage:(NSString *)message
              doneString:(NSString *)doneStr
-            doneHandler:(void (^)())donehandler
+            doneHandler:(TargetBlock)donehandler
            cancelString:(NSString *)cancelStr
-          cancelHandler:(void (^)())cancelhandler;
+          cancelHandler:(TargetBlock)cancelhandler;
 
 -(void)showAlertMessage:(NSString *)message
              doneString:(NSString *)doneStr
-            doneHandler:(void (^)())donehandler
+            doneHandler:(TargetBlock)donehandler
            cancelString:(NSString *)cancelStr;
 
 -(void)showAlertTitle:(NSString *)title

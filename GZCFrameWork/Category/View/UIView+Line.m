@@ -7,13 +7,13 @@
 //
 
 #import "UIView+Line.h"
-#import "ProjectMacros.h"
+#import "UIColor+Utils.h"
 
 @implementation UIView (Line)
 
 
 -(CALayer*)drawLineToFrame:(CGRect)frame{
-    return [self drawLineToFrame:frame color:mainLineColor];
+    return [self drawLineToFrame:frame color:KLineGrayColor];
 }
 
 -(CALayer*)drawLineToFrame:(CGRect)frame

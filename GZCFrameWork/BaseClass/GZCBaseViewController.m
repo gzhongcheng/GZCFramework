@@ -297,7 +297,7 @@ NSString * const backgroundViewId  = @"backgroundViewId";
 
 -(void)showAlertMessage:(NSString *)message
              doneString:(NSString *)doneStr
-            doneHandler:(void (^)())donehandler
+            doneHandler:(TargetBlock)donehandler
            cancelString:(NSString *)cancelStr{
     [self showAlertMessage:message
                 doneString:doneStr
@@ -309,9 +309,9 @@ NSString * const backgroundViewId  = @"backgroundViewId";
 
 -(void)showAlertMessage:(NSString *)message
              doneString:(NSString *)doneStr
-            doneHandler:(void (^)())donehandler
+            doneHandler:(TargetBlock)donehandler
            cancelString:(NSString *)cancelStr
-          cancelHandler:(void (^)())cancelhandler{
+          cancelHandler:(TargetBlock)cancelhandler{
     [self showAlertMessage:message
                 doneString:doneStr
                doneHandler:donehandler
@@ -322,10 +322,10 @@ NSString * const backgroundViewId  = @"backgroundViewId";
 
 -(void)showAlertMessage:(NSString *)message
              doneString:(NSString *)doneStr
-            doneHandler:(void (^)())donehandler
+            doneHandler:(TargetBlock)donehandler
               doneStyle:(UIAlertActionStyle)doneStyle
            cancelString:(NSString *)cancelStr
-          cancelHandler:(void (^)())cancelhandler{
+          cancelHandler:(TargetBlock)cancelhandler{
     [self showAlertTitle:@"提示"
                  message:message
               doneString:doneStr
@@ -338,10 +338,10 @@ NSString * const backgroundViewId  = @"backgroundViewId";
 -(void)showAlertTitle:(NSString *)title
               message:(NSString *)message
            doneString:(NSString *)doneStr
-          doneHandler:(void (^)())donehandler
+          doneHandler:(TargetBlock)donehandler
             doneStyle:(UIAlertActionStyle)doneStyle
          cancelString:(NSString *)cancelStr
-        cancelHandler:(void (^)())cancelhandler{
+        cancelHandler:(TargetBlock)cancelhandler{
     GZCAlertHandle *hander = [GZCAlertHandle new];
     hander.title.text = title;
     hander.title.textColor = [UIColor whiteColor];

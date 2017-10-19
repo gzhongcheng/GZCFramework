@@ -38,8 +38,11 @@
     {
         if(!image)
         {
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wundeclared-selector"
             NSData* data = [[SDImageCache sharedImageCache] performSelector:@selector(diskImageDataBySearchingAllPathsForKey:) withObject:key];
             image = [UIImage imageWithData:data];
+#pragma clang diagnostic pop
         }
         if(image)
         {

@@ -11,10 +11,10 @@
 #ifndef ThirdMacros_h
 #define ThirdMacros_h
 
-#define UMAppKey        @""
-#define WXAppID         @""
-#define WXAppSecret     @""
+#define UMAppKey        @"59b26492734be47ee5000c07"
+#define WXAppID         @"wx023adbd9f3f214bc"
+#define WXAppSecret     @"0964600e02bec62f054e3f84bb47832c"
 //谷歌定位
-#define LocationKey     @""
+#define LocationKey     @"3195059930ccc930ab7be50d1f937820"
 
 #endif /* ThirdMacros_h */

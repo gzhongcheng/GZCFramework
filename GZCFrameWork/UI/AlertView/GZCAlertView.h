@@ -9,8 +9,8 @@
 #import "LEEAlert.h"
 #import "GZCAlertHandle.h"
 
-typedef void (^NoticeDoneBlock)();
-typedef void (^NoticeCloseBlock)();
+typedef void (^NoticeDoneBlock)(void);
+typedef void (^NoticeCloseBlock)(void);
 
 @interface GZCAlertView : LEEAlert
 

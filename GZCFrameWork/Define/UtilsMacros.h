@@ -22,8 +22,8 @@
 #define kNotificationCenter [NSNotificationCenter defaultCenter]
 
 //获取UUID
-#define kDiviceKey     [[[UIDevice currentDevice]identifierForVendor] UUIDString]
-#define LocalString(key) NSLocalizedStringFromTable(key,@"Localizable", nil)
+#define kDiviceKey          [[[UIDevice currentDevice]identifierForVendor] UUIDString]
+#define LocalString(key)    NSLocalizedStringFromTable(key,@"Localizable", nil)
 
 /**
  屏幕相关
@@ -35,7 +35,7 @@
 #define Iphone6ScaleWidth   KScreenWidth/375.0
 #define Iphone6ScaleHeight  KScreenHeight/667.0
 
-#define Iphone_X_Device  KScreenHeight>810.0f
+#define Iphone_X_Device     KScreenHeight>810.0f
 //根据ip6的屏幕来拉伸
 #define kRealValue(with)    ((with)*(KScreenWidth/375.0f))
 
@@ -93,23 +93,6 @@
  颜色相关
  **/
 #import "UIColor+Utils.h"
-//颜色
-#define KClearColor         [UIColor clearColor]
-#define KWhiteColor         [UIColor whiteColor]
-#define KBlackColor         [UIColor blackColor]
-#define KGrayColor          [UIColor grayColor]
-#define KGray2Color         [UIColor lightGrayColor]
-#define KBlueColor          [UIColor blueColor]
-#define KRedColor           [UIColor redColor]
-//随机色生成
-#define kRandomColor        KRGBColor(arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0,arc4random_uniform(256)/255.0)
-//RGB色值
-#define RGB(r,g,b) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:1.]
-#define RGBA(r,g,b,a) [UIColor colorWithRed:r/255. green:g/255. blue:b/255. alpha:a]
-//十六进制颜色
-#define HEXCOLOR(str) [UIColor hexFloatColor:str]
-//改变颜色的透明度
-#define CHANGE_COLOR_ALPHA(c,a) [c colorWithAlphaComponent:a];
 
 /**
  字体
